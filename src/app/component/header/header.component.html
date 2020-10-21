@@ -1,0 +1,84 @@
+<!-- page header for all progect -->
+<nav class=" fixed-top">
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark purple lighten-1" [containerInside]="false">
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
+    <!-- Collapsible content -->
+    <links>
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li routerLinkActive="active" class="nav-item ">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="shoping">shoping </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="prodect">
+            shoping cart
+            <span class="badge badge-warning badge-pill" *ngIf="cart$ "> {{cart$.getTotalcount}}</span>
+          </a>
+        </li>
+        <!-- Dropdown -->
+        <li *ngIf="appUser" class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <span *ngIf="appUser">{{appUser.name}}</span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <div class="divider dropdown-divider"></div>
+            <a mdbWavesEffect class="dropdown-item waves-light" routerLink="prodect">prodect</a>
+            <ng-container *ngIf="appUser.isAdmin">
+              <a mdbWavesEffect class="dropdown-item waves-light" routerLink="admin/prodect">admin prodect</a>
+              <a mdbWavesEffect class="dropdown-item waves-light" routerLink="new-prodect">new prodect</a>
+            </ng-container>
+          </div>
+        </li>
+      </ul>
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
+        </li>
+        <li class="nav-item avatar dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <img *ngIf="appUser else localImg" [src]="appUser?.photoURL" size="lg" alt=""
+              class="img-fluid rounded-circle z-depth-0">
+            <ng-template #localImg>
+              <mdb-icon fas icon="user-plus" size="lg"></mdb-icon>
+            </ng-template>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <!-- Card -->
+            <div *ngIf="appUser else sign">
+              <div class="card border-none testimonial-card">
+                <!-- Background color -->
+                <div class="card-up indigo lighten-1"></div>
+                <!-- Avatar -->
+                <div class="avatar  mt-3 mx-auto white">
+                  <img width="100px" [src]="appUser.photoURL" class="rounded-circle" alt="woman avatar">
+                </div>
+                <!-- Content -->
+                <div class="card-body">
+                  <!-- Name -->
+                  <h4 class="card-title text-center">{{appUser.email}}</h4>
+                  <hr>
+                  <!-- Quotation -->
+                  <p>
+                    <a mdbWavesEffect class="dropdown-item waves-light" routerLink="user"> My account</a>
+                    <a mdbWavesEffect class="dropdown-item waves-light" (click)="logout()">Log out</a>
+                  </p>
+                </div>
+              </div>
+              <!-- Card -->
+            </div>
+            <ng-template #sign>
+              <a class="nav-link waves-light login-color" routerLink="login">
+                <mdb-icon fas icon="user-cog"></mdb-icon> login
+              </a>
+            </ng-template>
+          </div>
+        </li>
+      </ul>
+    </links>
+    <!-- Collapsible content -->
+  </mdb-navbar>
+</nav>
+<!--Navbar-->
+<!--/.Navbar-->

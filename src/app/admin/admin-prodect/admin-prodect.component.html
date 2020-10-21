@@ -1,0 +1,24 @@
+                                   
+                                   <!-- page  admin prodect  -->
+<p>
+    <a routerLink="/admin/prodect/new" class="btn btn-primary">add new prodect</a>
+</p>
+<!-- <div class="form-group">
+    <input type="text" placeholder="search......." #type (keyup)="filter(type.value)" class="form-control">
+</div> -->
+<table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">price</th>
+            <th scope="col">Edite</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let  prodect of filterprodect ">
+            <td>{{prodect.payload.val().title}} </td>
+            <td>{{prodect.payload.val().price}}</td>
+            <td><a [routerLink]="['/admin/prodect', prodect.key]">Edite</a></td>
+        </tr>
+    </tbody>
+</table>

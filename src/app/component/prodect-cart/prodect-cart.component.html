@@ -1,0 +1,21 @@
+                                        <!-- carts -->
+<div class="mt-2 mb-2" class="card" style="width: 18rem; ">
+  <img [src]="prodect.payload.val().imgUrl" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">{{prodect.payload.val().title}}</h5>
+    <h6 class="card-title">{{prodect.payload.val().category}}</h6>
+    <p class="card-text">{{prodect.payload.val().price | currency:'USD':true}}</p>
+  </div>
+  <div class="">
+    <button  *ngIf="getQuentity() === 0;else itemChange" (click)="addCart()" class="btn btn-primary btn-block">add to cart</button>
+    <ng-template #itemChange> 
+      <div class="row">
+        <div class="col-3"><button (click)="removeCart()" class="btn btn-danger btn-block">-</button>  </div>
+        <div class="col" ><h3 class="text-center" >{{ idtest}}</h3></div>
+        <div class="col-3"> <button  (click)="addCart()"  class="btn btn-success btn-block">+</button> </div>
+
+      </div>
+    </ng-template>
+    
+  </div>
+</div>

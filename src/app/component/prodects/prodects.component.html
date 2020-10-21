@@ -1,0 +1,25 @@
+                                    <!-- shoping cart -->
+<div  >
+    <div>you have    <b >{{count( ) -3}}</b>   brodect </div>
+    <table class="table table-striped table-dark"> 
+        <thead>
+            <tr>
+                <th>num</th>
+                <th>title</th>
+                <th>price</th>
+                <th>counter</th>
+                <th>total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items;let num= index">
+                <th >{{num + 1}} -</th>
+                <td>{{item.prodect.title}}</td>
+                <td>{{item.prodect.price  | currency:'USD':true}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.prodect.price * item.quantity  | currency:'USD':true}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
