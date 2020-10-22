@@ -53,7 +53,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
   BrowserModule,
     AppRoutingModule,
     NgbModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule,
