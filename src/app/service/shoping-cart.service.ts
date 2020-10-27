@@ -36,8 +36,8 @@ export class ShopingCartService implements OnInit {
   // get cart from data base by id
   public async getCART():Promise<Observable<CartItem>> {
     let cartId =await this.getcartid();
-    if(cartId)
-   return this.db.object("/user/" + this.userId +"/shoping-carts/" + cartId).valueChanges().pipe(map( cart => new CartItem( (cart as any).item) ))
+    
+   return this.db.object("/user/" + this.userId +"/shoping-carts/" + cartId + "/item/").valueChanges().pipe(map( cart => new CartItem( (cart as any).item) ))
   };
 // get one cart 
   getcart(cartID:string,prodectId:string){
@@ -50,9 +50,7 @@ async shoingCarts(){
   let cartId =await this.getcartid();
   return this.db.object("/user/" + this.userId +"/shoping-carts/" + cartId).valueChanges()
 }
-  // if()
-  // this.updatecart(prodect,-1)
-  // remove one cart from shoing user
+    
    async removecart(prodect){
     let cartId =await this.getcartid();
     let item$ = this.getcart(cartId,prodect.key);
@@ -62,14 +60,7 @@ async shoingCarts(){
        }
      })
   } 
-  // async getqound(prodect){
-  //   let cartId =await this.getcartid();
-  //   let item$ = this.getcart(cartId,prodect);
-  //    item$.snapshotChanges().pipe(take(1)).subscribe((item:any) =>{
-  //     return  item.payload.val().quantity
-  //    })
-  // } 
-// add cart to shoping user
+ 
   async updatecart(prodect,addRemov){
     let cartId =await this.getcartid();
     let item$ = this.getcart(cartId,prodect.key);
@@ -97,5 +88,9 @@ async shoingCarts(){
  }
  cartID(){
    return localStorage.getItem("cartID")
+ }
+ gitCart(){
+   let cartid = this.cartID()
+   return this.db.object("/user/" + this.userId + "/shoping-carts/" + cartid +"/item/" )
  }
 }

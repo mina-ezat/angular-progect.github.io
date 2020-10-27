@@ -15,7 +15,7 @@ userID
 cartID
 prece =0
 getTotalcount=0
-  constructor(private db:AngularFireDatabase,private shopingcart:ShopingCartService) { 
+  constructor(private db:AngularFireDatabase,private shopingcart:ShopingCartService) {  
     this.userID = this.shopingcart.userUid()
       this.cartID = this.shopingcart.cartID()
   }
@@ -30,7 +30,6 @@ getTotalcount=0
    count(){
    for(let cart of this.items){
     this.getTotalcount +=cart.quantity;
-    break;
   }
 
   return this.getTotalcount
