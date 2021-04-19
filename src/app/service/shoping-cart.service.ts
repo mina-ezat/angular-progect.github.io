@@ -50,13 +50,15 @@ async shoingCarts(){
   let cartId =await this.getcartid();
   return this.db.object("/user/" + this.userId +"/shoping-carts/" + cartId).valueChanges()
 }
-    
+
    async removecart(prodect){
     let cartId =await this.getcartid();
     let item$ = this.getcart(cartId,prodect.key);
      item$.snapshotChanges().pipe(take(1)).subscribe((item:any) =>{
-       if(item.payload.val().quantity > 0 ){
+       if(item.payload.val().quantity > 1 ){
          item$.update({quantity: item.payload.val().quantity -1})
+       }else{
+        item$.remove()
        }
      })
   } 
@@ -80,7 +82,13 @@ async shoingCarts(){
        
      })
   }
- 
+  async removeAllCart(prodect){
+    let cartId =await this.getcartid();
+    let item$ = this.getcart(cartId,prodect);
+          item$.snapshotChanges().pipe(take(1)).subscribe((item:any) =>{
+             item$.remove()
+          })
+  } 
   ngOnInit(){
    }
  userUid(){
@@ -93,4 +101,12 @@ async shoingCarts(){
    let cartid = this.cartID()
    return this.db.object("/user/" + this.userId + "/shoping-carts/" + cartid +"/item/" )
  }
+ setCart(){
+  let cartid = this.cartID()
+  return this.db.list("/user/" + this.userId + "/shoping-carts/" + cartid +"/order/" )
+}
+setCarts(){
+  let cartid = this.cartID()
+  return this.db.object("/user/" + this.userId + "/shoping-carts/" + cartid +"/order/" )
+}
 }

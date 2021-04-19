@@ -1,4 +1,4 @@
-                                    <!-- shoping cart -->
+        <!-- shoping cart -->
 <div  >
      <table class="table table-striped table-dark"> 
         <thead>
@@ -18,7 +18,23 @@
                 <td>{{item.prodect.price  | currency:'USD':true}}</td>
                 <td>{{item.quantity}}</td>
                 <td>{{item.prodect.price * item.quantity  | currency:'USD':true}} </td>
+                <td> <button (click)="removeAllCart()" class="btn btn-danger btn-block"><i class="far fa-trash-alt"></i></button> </td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                
+                <td></td>
+                <td></td>
+                <th >total</th>
+                <td>{{Totalcount}}</td>
+                <td>{{totalmony | currency:'USD':true}}</td>
+                <td> <a routerLink="/ConOrder" > <button  class="btn btn-success btn-block">تاكيد الشراء</button></a></td>
+
             </tr>
         </tbody>
     </table>
 </div>
+
+
+

@@ -24,16 +24,15 @@ export class ProdectCartComponent implements OnInit {
     this.auth.AppUser$.subscribe(user=> {
       this.appUser = user
     } );
-   
+    
    }
   addCart(){
   this.shopingcart.updatecart(this.prodect,-1);
 
   }
   removeCart(){
-  this.shopingcart.updatecart(this.prodect,1);
-
-  }
+  this.shopingcart.removecart(this.prodect);
+   }
 //  getqound(test){
 //     return   this.shopingcart.getqound(test);
 

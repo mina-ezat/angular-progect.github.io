@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ShopingCartService } from './../../service/shoping-cart.service';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-prodects',
@@ -8,30 +9,43 @@ import { AngularFireDatabase } from 'angularfire2/database';
   styleUrls: ['./prodects.component.scss']
 })
 export class ProdectsComponent implements OnInit {
-cart$
-shoping
-items
-userID
-cartID
-prece =0
-getTotalcount=0
-  constructor(private db:AngularFireDatabase,private shopingcart:ShopingCartService) {  
+  @Input('prodect') prodect: any
+  items
+  userID
+  cartID
+  Totalcount = 0
+  totalmony = 0
+  id
+  item
+  constructor(private db: AngularFireDatabase, private shopingcart: ShopingCartService,private activrot:ActivatedRoute) {
+    this.id = this.activrot.snapshot.paramMap.get('id');
     this.userID = this.shopingcart.userUid()
-      this.cartID = this.shopingcart.cartID()
+    this.cartID = this.shopingcart.cartID()
+    console.log(this.prodect)
   }
-
-   ngOnInit() {
- this.db.list("/user/" + this.userID + "/shoping-carts/" + this.cartID +"/item/" ).valueChanges().subscribe(user =>{
-     this.items= user
-  })
-
   
-  }
-   count(){
-   for(let cart of this.items){
-    this.getTotalcount +=cart.quantity;
-  }
+  ngOnInit() {
+    this.db.list("/user/" + this.userID + "/shoping-carts/" + this.cartID + "/item/").valueChanges().subscribe((user: any) => {
 
-  return this.getTotalcount
+      this.items = user
+
+      for (let cart of this.items) {
+        this.Totalcount += cart.quantity;
+      }
+      for (let cart of this.items) {
+        this.totalmony += cart.quantity * cart.prodect.price;
+      }
+    })
+
+    this.db.object("/user/" + this.userID + "/shoping-carts/" + this.cartID + "/item/").snapshotChanges().subscribe((user: any) => {
+
+      this.item = user
+
+    })
+  }
+  removeAllCart() {
+    
+    // this.db.list("/user/" + this.userID + "/shoping-carts/" + this.cartID + "/item/").remove(this.id);
+    console.log(this.item )
   }
 }

@@ -1,0 +1,143 @@
+<!-- Section: Contact v.3 -->
+<section class="contact-section my-5">
+
+    <!-- Form with header -->
+    <div class="card">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-lg-8">
+  
+          <div class="card-body form">
+              <form   #valu="ngForm" (ngSubmit)="submite(valu)">
+            <!-- Header -->
+            <h3 class="mt-4"><mdb-icon fas icon="envelope" class="pr-2"></mdb-icon>Write to us:</h3>
+  
+            <!-- Grid row -->
+            <div class="row">
+  
+              <!-- Grid column -->
+              <div class="col-md-6">
+                <div class="md-form mb-0">
+                  <input type="text" ngModel #name="ngModel" name="name" id="form-contact-name" class="form-control" mdbInput>
+                  <label for="form-contact-name" class="">Your name</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+  
+              <!-- Grid column -->
+              <div class="col-md-6">
+                <div class="md-form mb-0">
+                  <input type="text"  ngModel #email="ngModel" name="email"  id="form-contact-email" class="form-control" mdbInput>
+                  <label for="form-contact-email" class="">Your email</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+  
+            </div>
+            <!-- Grid row -->
+  
+            <!-- Grid row -->
+            <div class="row">
+  
+              <!-- Grid column -->
+              <div class="col-md-6">
+                <div class="md-form mb-0">
+                  <input type="text" ngModel #phone="ngModel" name="phone" id="form-contact-phone" class="form-control" mdbInput>
+                  <label for="form-contact-phone" class="">Your phone</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+  
+              <!-- Grid column -->
+              <div class="col-md-6">
+                <div class="md-form mb-0">
+                  <input ngModel type="text" name="address" #address="ngModel" id="form-contact-company" class="form-control" mdbInput>
+                  <label for="form-contact-company" class="">Your address</label>
+                </div>
+              </div>
+              <!-- Grid column -->
+  
+            </div>
+            <!-- Grid row -->
+  
+            <!-- Grid row -->
+            <div class="row">
+  
+              <!-- Grid column -->
+              <div class="col-md-12">
+                <div class="md-form mb-0">
+                  <textarea type="text" ngModel #note="ngModel" name="note" id="form-contact-message" class="form-control md-textarea" rows="3"
+                    mdbInput></textarea>
+                  <label for="form-contact-message">Your note</label>
+ 
+                </div>
+              </div>
+              <!-- Grid column -->
+   
+            </div>
+            <button   type="submit" class="btn btn-primary btn-block">تاكيد الشراء</button>
+            <!-- Grid row -->
+             </form>
+          </div>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-lg-4 primary-color-dark">
+  
+          <div class="card-body contact text-center h-100 white-text">
+  
+            <h3 class="my-4 pb-2">Contact information</h3>
+            <ul class="text-lg-left list-unstyled ml-4">
+             <li>
+                <p><mdb-icon fas icon="map-marked" class="pr-2"></mdb-icon>{{name.value}}</p>
+             </li>
+              <li>
+                <p><mdb-icon fas icon="map-marked" class="pr-2"></mdb-icon> {{address.value}}</p>
+              </li>
+              <li>
+                <p><mdb-icon fas icon="phone" class="pr-2"></mdb-icon>+{{phone.value}}</p>
+              </li>
+              <li>
+                <p><mdb-icon fas icon="envelope" class="pr-2"></mdb-icon>{{email.value}}</p>
+              </li>
+              <li>
+                <p><mdb-icon fas icon="envelope" class="pr-2"></mdb-icon>{{note.value}}</p>
+              </li>
+            </ul>
+            <hr class="hr-light my-4">
+            <ul class="list-inline text-center list-unstyled">
+              <li class="list-inline-item">
+                <a class="p-2 fa-lg tw-ic">
+                  <mdb-icon fab icon="twitter"></mdb-icon>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="p-2 fa-lg li-ic">
+                  <mdb-icon fab icon="linkedin-in"> </mdb-icon>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="p-2 fa-lg ins-ic">
+                  <mdb-icon fab icon="instagram"> </mdb-icon>
+                </a>
+              </li>
+            </ul>
+  
+          </div>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Form with header -->
+  
+  </section>
+  <!-- Section: Contact v.3 -->

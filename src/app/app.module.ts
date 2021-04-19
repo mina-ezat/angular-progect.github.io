@@ -32,6 +32,10 @@ import { ProdectFilterComponent } from './component/shoping/prodect-filter/prode
 import { ShopingCartService } from './service/shoping-cart.service';
 import { LocalstorgService } from './service/localstorg.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ConfirmOrderComponent } from './component/prodects/confirm-order/confirm-order.component';
+import { AllShopingComponent } from './component/all-shoping/all-shoping.component';
+import { OrderShopingComponent } from './component/order-shoping/order-shoping.component';
+import { OrderReceivedComponent } from './component/order-received/order-received.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     FormProdectComponent,
     ProdectCartComponent,
     ShopingComponent,
-    ProdectFilterComponent
+    ProdectFilterComponent,
+    ConfirmOrderComponent,
+    AllShopingComponent,
+    OrderShopingComponent,
+    OrderReceivedComponent
   ],
   imports: [
   BrowserModule,

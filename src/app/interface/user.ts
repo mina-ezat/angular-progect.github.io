@@ -42,3 +42,7 @@ export interface Prodect{
      id:any;
   key: any;
 }
+export interface OrderInterface {
+info:string;
+prodect:string
+}
